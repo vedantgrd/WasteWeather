@@ -47,12 +47,37 @@ Hit **DEMO MODE** in the top-right corner to switch instantly between three pre-
   </tr>
 </table>
 
+<table align="center" width="900">
+  <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Peak Ward</th>
+      <th>Storm Probability</th>
+      <th>Dominant Waste</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ganesh Visarjan + Rainfall</td>
+      <td>Dadar (F/N)</td>
+      <td>94%</td>
+      <td>Flower + Organic</td>
+    </tr>
+    <tr>
+      <td>Heavy Monsoon</td>
+      <td>Dharavi-Sion (G/S)</td>
+      <td>71%</td>
+      <td>Mixed / Collection overflow</td>
+    </tr>
+    <tr>
+      <td>Diwali Weekend</td>
+      <td>Andheri East (K/E)</td>
+      <td>72%</td>
+      <td>Plastic + Paper</td>
+    </tr>
+  </tbody>
+</table>
 
-| Scenario | Peak Ward | Storm Probability | Dominant Waste |
-|---|---|---|---|
-| Ganesh Visarjan + Rainfall | Dadar (F/N) | 94% | Flower + Organic |
-| Heavy Monsoon | Dharavi-Sion (G/S) | 71% | Mixed / Collection overflow |
-| Diwali Weekend | Andheri East (K/E) | 72% | Plastic + Paper |
 
 **Live demo flow:**
 1. Open Overview → **WASTE STORM RISK: HIGH** is immediately visible
