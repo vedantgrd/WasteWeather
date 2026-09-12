@@ -35,9 +35,18 @@ Historical waste data
 
 ## Demo
 
-Open `waste_weather.html` in any modern browser. No server, no dependencies, no login.
+Open `index.html` in any modern browser. No server, no dependencies, no login.
 
 Hit **DEMO MODE** in the top-right corner to switch instantly between three pre-loaded scenarios:
+
+<table align="center">
+  <tr>
+    <td style="border: 2px solid #30363d; border-radius: 10px; padding: 0;">
+      <img src="outputs/demo.png" alt="WasteWeather Demo" width="900">
+    </td>
+  </tr>
+</table>
+
 
 | Scenario | Peak Ward | Storm Probability | Dominant Waste |
 |---|---|---|---|
@@ -45,7 +54,7 @@ Hit **DEMO MODE** in the top-right corner to switch instantly between three pre-
 | Heavy Monsoon | Dharavi-Sion (G/S) | 71% | Mixed / Collection overflow |
 | Diwali Weekend | Andheri East (K/E) | 72% | Plastic + Paper |
 
-**Live demo flow (3–5 minutes):**
+**Live demo flow:**
 1. Open Overview → **WASTE STORM RISK: HIGH** is immediately visible
 2. Point to Dadar on the ward map → click → detail panel shows +101% surge
 3. Navigate to **Operations** → see the WHY breakdown (Visarjan 42%, footfall 28%, rainfall 18%)
@@ -70,21 +79,80 @@ Waste Weather does not simply predict "more waste tomorrow." It predicts:
 ## Screens
 
 ### Overview
+
+<table align="center">
+  <tr>
+    <td style="border: 2px solid #30363d; border-radius: 10px; padding: 0;">
+      <img src="outputs/ov.png" alt="WasteWeather Demo" width="900">
+    </td>
+  </tr>
+</table>
+
 City-level command view. Storm risk classification, four-question summary (WHERE / WHEN / WHAT / WHY), recommended resource deployment, and the interactive ward map. Every ward is color-coded by severity. Click any ward for a pinned detail panel.
 
 ### Ward Intelligence
+
+<table align="center">
+  <tr>
+    <td style="border: 2px solid #30363d; border-radius: 10px; padding: 0;">
+      <img src="outputs/wi.png" alt="WasteWeather Demo" width="900">
+    </td>
+  </tr>
+</table>
+
+
 Searchable table of all 24 Mumbai wards. Sortable by storm probability, surge %, driver, and recommended resources. One click to jump back to the map focused on that ward.
 
 ### Forecast
+
+<table align="center">
+  <tr>
+    <td style="border: 2px solid #30363d; border-radius: 10px; padding: 0;">
+      <img src="outputs/fr.png" alt="WasteWeather Demo" width="900">
+    </td>
+  </tr>
+</table>
+
+
 14-day waste forecast chart for any selected ward. Shows actual historical waste, the model's predictions, and the baseline — with storm zones shaded in red. Includes tomorrow's expected waste composition as a breakdown bar chart.
 
 ### Operations
+
+<table align="center">
+  <tr>
+    <td style="border: 2px solid #30363d; border-radius: 10px; padding: 0;">
+      <img src="outputs/op.png" alt="WasteWeather Demo" width="900">
+    </td>
+  </tr>
+</table>
+
+
 The full prediction-to-action pipeline. Signal contribution bars show exactly why a ward is at risk. Response plan gives specific pre-positioning instructions: priority routes, collection window, waste type priority, and resource numbers.
 
 ### What If?
+
+<table align="center">
+  <tr>
+    <td style="border: 2px solid #30363d; border-radius: 10px; padding: 0;">
+      <img src="outputs/whatif.png" alt="WasteWeather Demo" width="900">
+    </td>
+  </tr>
+</table>
+
+
 Decision-support simulator. Five city-signal sliders (festival intensity, rainfall, footfall, market activity, weekend toggle) dynamically recalculate storm probability, predicted waste, surge %, and additional vehicles required. Useful for planning meetings and contingency scenarios.
 
 ### City Memory
+
+<table align="center">
+  <tr>
+    <td style="border: 2px solid #30363d; border-radius: 10px; padding: 0;">
+      <img src="outputs/cm.png" alt="WasteWeather Demo" width="900">
+    </td>
+  </tr>
+</table>
+
+
 Year-on-year historical comparison for key events. Shows that Ganesh Visarjan in Dadar has produced a waste surge every single year from 2021 to 2025 — with COVID restrictions visible as a structural dip in 2021. The system learns from patterns that repeat.
 
 ---
