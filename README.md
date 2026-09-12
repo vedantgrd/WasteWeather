@@ -1,692 +1,244 @@
-# 🌧️ WASTE WEATHER:
+# WASTE WEATHER
+### Predict the city's next waste storm.
 
- ### Predict the city's next waste storm.
-
- > **Weather forecasts tell a city when to prepare for rain.\
->  Waste Weather tells a city when to prepare for waste.**
-
- Waste Weather is a predictive urban intelligence platform designed to forecast abnormal waste-generation events across Mumbai's wards.
-
- Instead of asking **"Where is the nearest bin?"**, Waste Weather asks:
-
- > **"Where is the next waste storm going to happen, when will it peak, why will it happen, and what should the city do before it arrives?"**
+> **Weather forecasts tell a city when to prepare for rain.**
+> **Waste Weather tells a city when to prepare for waste.**
 
 ---
 
- ## 🚨 The Problem
+Mumbai has a weather department. It doesn't have a waste-weather department — yet.
 
- Cities have sophisticated weather forecasting systems, but waste management is often reactive.
+Every year, Ganesh Visarjan, Diwali, Eid, heavy monsoon rains, and weekend market surges cause predictable waste storms in specific wards. Municipal teams are almost always caught reacting: vehicles scramble after overflow has already happened, sanitation workers are deployed hours late, and the city spends more on cleanup than it would have spent on preparation.
 
- A normal day can suddenly become very different because of:
-
- - 🎉 Festivals and religious events
-- 🌧️ Heavy rainfall and monsoons
-- 🛍️ Markets and commercial activity
-- 👥 Sudden changes in footfall
-- 🏖️ Tourism
-- 📅 Holidays and weekends
-- 🏟️ Large public events
-
- For example, during **Ganesh Visarjan**, a ward can experience a dramatic increase in:
-
- - Flower waste
-- Food and organic waste
-- Plastic waste
-- Footfall
-- Collection requirements
-
- If the city knows about this surge **before it happens**, collection vehicles, sanitation workers, and temporary processing capacity can be positioned in advance.
-
- That's the idea behind Waste Weather.
+Waste Weather is a **predictive operational intelligence system** for abnormal waste events. It reads the city's calendar, weather, footfall, and historical patterns — and tells municipal operations, before the storm arrives, exactly where to deploy, what to expect, and how much.
 
 ---
 
- ## 💡 The Solution
+## The core idea
 
- Waste Weather treats a city's calendar and human activity as an **environmental sensor**.
+Cities experience two kinds of weather.
 
- It combines multiple city signals:
+The first kind — rain, heat, humidity — has been forecast for over a century. The second kind — waste surges driven by festivals, markets, monsoons, and human activity — is still managed reactively.
+
+Waste Weather treats **the city calendar as an environmental sensor**. A festival on the calendar is as predictable as a low-pressure system on a weather map. The question isn't whether Ganesh Visarjan will generate a waste surge in Dadar — it will, every single year. The question is whether the city has enough information, early enough, to prepare.
 
 ```
-┌─────────────────────┐
-│      CITY SIGNALS   │
-├─────────────────────┤
-│ Weather             │
-│ Festivals           │
-│ Holidays            │
-│ Footfall            │
-│ Market Activity     │
-│ Ward Characteristics│
-│ Historical Waste    │
-│ Collection Capacity │
-└──────────┬──────────┘
-           ↓
-┌─────────────────────┐
-│  WASTE WEATHER      │
-│  FORECAST ENGINE    │
-└──────────┬──────────┘
-           ↓
-┌─────────────────────┐
-│   WASTE STORM RISK  │
-├─────────────────────┤
-│ WHERE?              │
-│ WHEN?               │
-│ WHAT?               │
-│ WHY?                │
-└──────────┬──────────┘
-           ↓
-┌─────────────────────┐
-│ OPERATIONAL PLAN    │
-├─────────────────────┤
-│ Vehicles            │
-│ Workers             │
-│ Capacity            │
-│ Priority Zones      │
-└─────────────────────┘
-```
-
- The core loop is:
-
- **SIGNALS → PREDICT → EXPLAIN → ACT**
-
----
-
- ## 🎯 What Waste Weather Predicts
-
- For every ward, the system can estimate:
-
- | Question | Example |
-| --- | --- |
-| **Where?** | Dadar |
-| **When?** | 18:00–23:00 |
-| **How much?** | +186% vs baseline |
-| **What?** | Flower + Organic |
-| **Why?** | Ganesh Visarjan + Footfall + Rain |
-| **Risk?** | HIGH |
-| **Action?** | Deploy additional collection capacity |
-
- The goal isn't simply to predict **more waste**.
-
- The goal is to predict **the operational consequences of that waste**.
-
----
-
- ## 🗺️ Key Features
-
- ### 1\. Mumbai Ward Intelligence
-
- Interactive ward-level visualization showing:
-
- - Current waste generation
-- Predicted waste generation
-- Expected surge
-- Waste storm probability
-- Peak time
-- Primary driver
-- Secondary driver
-- Additional vehicles required
-- Additional staff required
-- Additional processing capacity
-
----
-
- ### 2\. 🌪️ Waste Storm Detection
-
- Identify upcoming abnormal waste events before they happen.
-
- Example:
-
-```
-DADAR
-Ganesh Visarjan
-Tomorrow · 18:00–23:00
-
-HIGH RISK
-
-+186% expected waste
-
-Primary driver:
-Ganesh Visarjan
-
-Secondary drivers:
-Rainfall + Footfall
+CITY SIGNALS          →    WASTE WEATHER ENGINE    →    WARD RISK    →    RESOURCE PLAN
+Festival calendar               Pattern matching           Where?           +N vehicles
+Weather forecast                Surge prediction           When?            +N workers  
+Footfall data                   Composition forecast       What?            +N tonnes
+Market activity                 Explainability layer       Why?             Priority zones
+Historical waste data
 ```
 
 ---
 
- ### 3\. 📈 7-Day Waste Forecast
+## Demo
 
- Forecast waste generation across wards and waste categories.
+Open `waste_weather.html` in any modern browser. No server, no dependencies, no login.
 
- The forecast compares:
+Hit **DEMO MODE** in the top-right corner to switch instantly between three pre-loaded scenarios:
 
- - Historical baseline
-- Predicted waste
-- Waste storm threshold
+| Scenario | Peak Ward | Storm Probability | Dominant Waste |
+|---|---|---|---|
+| Ganesh Visarjan + Rainfall | Dadar (F/N) | 94% | Flower + Organic |
+| Heavy Monsoon | Dharavi-Sion (G/S) | 71% | Mixed / Collection overflow |
+| Diwali Weekend | Andheri East (K/E) | 72% | Plastic + Paper |
 
- When the prediction crosses the threshold, the period is highlighted as a **WASTE STORM**.
-
----
-
- ### 4\. 🔎 Explainable Predictions
-
- Waste Weather doesn't just say:
-
- > **"Risk: HIGH"**
-
- It explains why.
-
- Example:
-
-```
-WHY IS THIS WARD AT RISK?
-
-Ganesh Visarjan      ████████████  42%
-Expected Footfall    █████████     28%
-Rainfall             ██████        18%
-Weekend Effect       ███            8%
-Historical Pattern   ██             4%
-```
-
- This makes the prediction understandable and actionable instead of presenting a black-box AI score.
+**Live demo flow (3–5 minutes):**
+1. Open Overview → **WASTE STORM RISK: HIGH** is immediately visible
+2. Point to Dadar on the ward map → click → detail panel shows +101% surge
+3. Navigate to **Operations** → see the WHY breakdown (Visarjan 42%, footfall 28%, rainfall 18%)
+4. Open **What If?** → drag rainfall to 120mm → probability climbs past 90%
+5. Switch to **City Memory** → show that this exact pattern has repeated every year since 2021
 
 ---
 
- ### 5\. ♻️ Waste Composition Forecast
+## What the system predicts
 
- Predict not only **how much waste** will be generated, but **what kind**.
+Waste Weather does not simply predict "more waste tomorrow." It predicts:
 
- Example:
-
-```
-Organic     48%
-Flower      27%
-Food        14%
-Plastic      7%
-Other        4%
-```
-
- This allows the municipality to prepare for the **type of waste**, not just the quantity.
+- **Where** — which ward will be affected, ranked by storm severity
+- **When** — peak collection window (e.g. 18:00–23:00 on Visarjan night)
+- **What** — dominant waste type (flower, organic, plastic, paper, mixed)
+- **Why** — which city signals are driving the prediction, with contribution weights
+- **How much** — expected tonnes above baseline
+- **What to do** — exact number of extra vehicles, workers, and processing capacity needed
 
 ---
 
- ### 6\. 🚛 Forecast → Action
+## Screens
 
- Convert predictions into resource recommendations.
+### Overview
+City-level command view. Storm risk classification, four-question summary (WHERE / WHEN / WHAT / WHY), recommended resource deployment, and the interactive ward map. Every ward is color-coded by severity. Click any ward for a pinned detail panel.
 
- Example:
+### Ward Intelligence
+Searchable table of all 24 Mumbai wards. Sortable by storm probability, surge %, driver, and recommended resources. One click to jump back to the map focused on that ward.
 
-```
-DADAR RESPONSE PLAN
+### Forecast
+14-day waste forecast chart for any selected ward. Shows actual historical waste, the model's predictions, and the baseline — with storm zones shaded in red. Includes tomorrow's expected waste composition as a breakdown bar chart.
 
-+14  Collection Vehicles
-+38  Sanitation Workers
-+62  Tonnes Temporary Capacity
+### Operations
+The full prediction-to-action pipeline. Signal contribution bars show exactly why a ward is at risk. Response plan gives specific pre-positioning instructions: priority routes, collection window, waste type priority, and resource numbers.
 
-Priority Window:
-18:00–23:00
+### What If?
+Decision-support simulator. Five city-signal sliders (festival intensity, rainfall, footfall, market activity, weekend toggle) dynamically recalculate storm probability, predicted waste, surge %, and additional vehicles required. Useful for planning meetings and contingency scenarios.
 
-Priority Waste:
-Flower + Organic
-```
-
- The system turns forecasting into a potential **pre-positioning strategy**.
+### City Memory
+Year-on-year historical comparison for key events. Shows that Ganesh Visarjan in Dadar has produced a waste surge every single year from 2021 to 2025 — with COVID restrictions visible as a structural dip in 2021. The system learns from patterns that repeat.
 
 ---
 
- ### 7\. 🎛️ What-If Simulator
+## Dataset
 
- Explore how changing city conditions could affect waste risk.
+The prototype runs on a synthetic but realistic dataset generated for this project. It is explicitly **not** official BMC data — it is a hackathon simulation designed to demonstrate the prediction approach with plausible Mumbai-scale numbers.
 
- Adjust:
+### Files
 
- - Festival intensity
-- Rainfall
-- Expected footfall
-- Market activity
-- Weekend effect
+| File | Rows | Description |
+|---|---|---|
+| `mumbai_waste_daily_2021_2025.csv` | ~43,800 | Daily ward-level observations and predictions |
+| `mumbai_ward_metadata.csv` | 24 | Ward characteristics and baseline parameters |
 
- Then observe changes in:
+### Daily dataset columns (63 total)
 
- - Predicted waste
-- Waste storm probability
-- Peak window
-- Required vehicles
-- Required staff
-- Required capacity
+**Temporal**
+`date`, `year`, `month`, `day_of_week`, `week_of_year`, `is_weekend`, `is_public_holiday`
 
- Example:
+**Weather**
+`rainfall_mm`, `temperature_c`, `humidity_pct`, `wind_speed_kmph`, `weather_condition`, `monsoon_intensity`
 
-```
-BEFORE
+**Events**
+`event_name`, `event_type`, `event_intensity`, `expected_footfall`, `festival_waste_multiplier`
 
-Waste Storm Probability
-64%
+**Activity indices** (0–100 scale)
+`mobility_index`, `market_activity_index`, `commercial_footfall_index`, `residential_footfall_index`, `restaurant_activity_index`, `tourist_activity_index`, `office_activity_index`, `school_activity_index`, `street_vendor_activity_index`
 
-        ↓ Increase rainfall + footfall
+**COVID context**
+`covid_restriction_level` (0–4), with downstream effects on all activity indices
 
-AFTER
+**Waste generation**
+`total_waste_tonnes`, `organic_waste_tonnes`, `food_waste_tonnes`, `plastic_waste_tonnes`, `paper_waste_tonnes`, `glass_waste_tonnes`, `metal_waste_tonnes`, `construction_waste_tonnes`, `flower_waste_tonnes`, `other_waste_tonnes`
 
-Waste Storm Probability
-91%
-```
+**Collection operations**
+`scheduled_collection_capacity_tonnes`, `actual_collected_tonnes`, `uncollected_waste_tonnes`, `collection_vehicle_count`, `collection_staff_count`, `collection_delay_hours`, `overflow_incidents`
 
----
+**ML targets** (do not use as input features)
+`next_day_total_waste_tonnes`, `next_day_waste_surge_pct`, `waste_storm_probability`, `waste_storm_severity` (0–4), `recommended_extra_vehicles`, `recommended_extra_staff`, `recommended_extra_capacity_tonnes`
 
- ### 8\. 📅 Historical Pattern Analysis
+**Explainability**
+`dominant_waste_type`, `waste_profile`, `primary_surge_driver`, `secondary_surge_driver`, `predicted_reason`
 
- The system uses historical patterns to understand recurring city events.
+**Split**
+`dataset_split`: `train` (2021–2023) · `validation` (2024) · `test` (2025)
 
- For example:
+### Ward metadata columns
 
-```
-Ganesh Visarjan
+`ward_code`, `ward_name`, `population_estimate`, `population_density`, `residential_index`, `commercial_index`, `market_index`, `industrial_index`, `tourism_index`, `restaurant_density_index`, `festival_activity_index`, `baseline_daily_waste_tonnes`, `typical_collection_capacity_tonnes`, `vehicle_base_count`, `staff_base_count`
 
-2021  ── Waste Surge
-2022  ───── Waste Surge
-2023  ─────── Waste Surge
-2024  ────── Waste Surge
-2025  ───────── Waste Surge
-```
+### Key causal relationships in the data
 
- This allows recurring events to become predictive signals rather than surprises.
+The dataset encodes realistic signal chains, not random noise:
 
----
-
- ## 📊 Dataset
-
- The prototype uses a synthetic Mumbai ward-level dataset covering:
-
- **2021–2025**
-
- ### Main dataset
-
- `mumbai_waste_daily_2021_2025.csv`
-
- Contains daily ward-level observations including:
-
- - Weather
-- Rainfall
-- Temperature
-- Humidity
-- Festivals
-- Events
-- Footfall
-- Market activity
-- COVID-era activity changes
-- Waste composition
-- Collection capacity
-- Vehicle availability
-- Staff availability
-- Collection delays
-- Overflow incidents
-- Waste storm probability
-- Waste storm severity
-- Recommended resources
-
- ### Ward metadata
-
- `mumbai_ward_metadata.csv`
-
- Contains ward-level characteristics such as:
-
- - Population
-- Population density
-- Residential activity
-- Commercial activity
-- Market activity
-- Tourism
-- Restaurant density
-- Festival activity
-- Baseline waste generation
-- Collection capacity
-- Vehicle base count
-- Staff base count
-
- ### Dataset split
-
- The data uses a time-based split:
-
-```
-TRAIN
-2021–2023
-
-VALIDATION
-2024
-
-TEST
-2025
-```
-
- A temporal split is used instead of random splitting to better represent a real forecasting problem.
-
- > **Note:** The dataset is synthetic/simulated and created for hackathon prototyping. It should not be interpreted as official BMC or municipal operational data.
+- Festival intensity × festival_activity_index → waste multiplier
+- Ganesh Visarjan → disproportionate `flower_waste_tonnes` spike in high-festival wards
+- Rainfall > 80mm → `collection_delay_hours` increases, `overflow_incidents` increases
+- COVID restriction level → suppresses mobility, commercial activity, event multipliers
+- Weekend + high `market_index` → elevated food and organic waste
+- `waste_storm_probability` > 0.75 → `waste_storm_severity` = 4 (Extreme)
 
 ---
 
- ## 🧠 Prediction Concept
+## Training a real model
 
- The system models the relationship between city activity and waste generation.
+The dataset is structured for time-series prediction. **Never use future-leaking columns as input features.**
 
- Conceptually:
+### Input features (safe to use)
+All weather columns, all activity indices, all event columns, COVID context, ward metadata, the current day's actual waste generation, and lagged waste values.
+
+### Target variables (predict these)
+`waste_storm_probability`, `waste_storm_severity`, `next_day_waste_surge_pct`, `recommended_extra_vehicles`, `recommended_extra_staff`
+
+### Suggested baseline models
+
+**XGBoost / LightGBM** — best for tabular data with mixed feature types. Use `waste_storm_probability` as a regression target or binarize at 0.5 for classification.
+
+**Random Forest** — interpretable baseline, good for understanding feature importance. Festival and footfall columns will likely dominate.
+
+**Time-series baseline** — for each ward, predict tomorrow = exponentially weighted average of last 7 days. Useful as a floor to beat.
+
+### Train / validation / test split
 
 ```
-Festival Intensity
-        +
-Weather
-        +
-Footfall
-        +
-Market Activity
-        +
-Seasonality
-        +
-Ward Characteristics
-        +
-Historical Patterns
-        ↓
-   Waste Forecast
-        ↓
- Waste Storm Risk
-        ↓
-Resource Recommendation
+Train      2021 – 2023    ~26,280 rows per ward
+Validation 2024            ~8,784 rows
+Test       2025            ~8,760 rows
 ```
 
- The prediction target can be framed as:
+**Do not shuffle rows.** This is time-series data. Random shuffling will cause target leakage from future dates.
 
- > **Will this ward experience a waste storm tomorrow?**
+### Evaluation metrics
 
- A waste storm is defined in the prototype as a significant deviation above the ward's normal waste baseline.
+| Task | Metric |
+|---|---|
+| Waste storm classification | F1, Precision, Recall, ROC-AUC |
+| Surge % prediction | MAE, RMSE |
+| Severity level | Weighted F1 (4-class) |
+| Resource recommendation | MAE (vehicles), MAE (staff) |
 
 ---
 
- ## 🧪 Demo Scenarios
-
- Waste Weather includes several scenarios designed to demonstrate the system.
-
- ### Scenario 1 — Ganesh Visarjan 🎉
-
- Expected behavior:
-
- - High footfall
-- Major waste surge
-- Significant flower waste
-- Increased organic waste
-- Evening collection peak
-- Increased collection requirements
+## Project structure
 
 ```
-Festival
-   ↓
-Footfall ↑
-   ↓
-Waste ↑↑↑
-   ↓
-Flower + Organic ↑
-   ↓
-Pre-position resources
-```
-
----
-
- ### Scenario 2 — Heavy Monsoon 🌧️
-
- Expected behavior:
-
- - Collection efficiency decreases
-- Collection delays increase
-- Overflow risk increases
-- Multiple wards may become elevated-risk zones
-
- The important insight:
-
- > Rain doesn't necessarily create the waste storm by itself — it can make an existing waste surge much harder for the city to handle.
-
----
-
- ### Scenario 3 — Weekend + Market Activity 🛍️
-
- Expected behavior:
-
- - Higher commercial activity
-- Increased market footfall
-- Increased food/organic waste
-- Localized waste surge
-
----
-
- ### Scenario 4 — Diwali 🪔
-
- Expected behavior:
-
- - Increased footfall
-- Increased food waste
-- Increased paper waste
-- Increased plastic/packaging waste
-
----
-
- ## 🏗️ System Architecture
-
-```
-                 ┌──────────────────────┐
-                 │ Historical Dataset   │
-                 │       2021–2025      │
-                 └──────────┬───────────┘
-                            ↓
-                 ┌──────────────────────┐
-                 │ Feature Processing    │
-                 ├──────────────────────┤
-                 │ Weather               │
-                 │ Calendar              │
-                 │ Events                │
-                 │ Footfall              │
-                 │ Ward characteristics  │
-                 │ Historical patterns   │
-                 └──────────┬───────────┘
-                            ↓
-                 ┌──────────────────────┐
-                 │ Forecasting Layer    │
-                 └──────────┬───────────┘
-                            ↓
-                 ┌──────────────────────┐
-                 │ Waste Storm Engine   │
-                 ├──────────────────────┤
-                 │ Probability          │
-                 │ Severity              │
-                 │ Waste Type            │
-                 │ Peak Window           │
-                 └──────────┬───────────┘
-                            ↓
-                 ┌──────────────────────┐
-                 │ Decision Engine      │
-                 ├──────────────────────┤
-                 │ Vehicles             │
-                 │ Staff                │
-                 │ Capacity             │
-                 │ Priority Zones       │
-                 └──────────┬───────────┘
-                            ↓
-                 ┌──────────────────────┐
-                 │ Command Center UI    │
-                 └──────────────────────┘
-```
-
----
-
- ## 🛠️ Tech Stack
-
- The prototype is designed as a modern interactive web application.
-
- Typical stack:
-
- - **Frontend:** React / Next.js
-- **Styling:** Tailwind CSS
-- **Charts:** Recharts / equivalent visualization library
-- **Maps:** SVG-based Mumbai ward visualization
-- **Data:** CSV
-- **Analytics:** JavaScript/TypeScript data processing
-- **Forecasting:** Prototype prediction layer using historical dataset outputs
-
- The application is designed to work without requiring a live external map API.
-
----
-
- ## 🚀 Running Locally
-
- Clone the repository:
-
-```
-git clone https://github.com/<your-username>/<your-repository>.git
-cd <your-repository>
-```
-
- Install dependencies:
-
-```
-npm install
-```
-
- Start the development server:
-
-```
-npm run dev
-```
-
- Open the local development URL shown by your framework.
-
----
-
- ## 📁 Project Structure
-
-```
-.
+waste-weather/
+├── waste_weather.html              # Self-contained interactive prototype
+├── README.md                       # This file
 ├── data/
 │   ├── mumbai_waste_daily_2021_2025.csv
 │   └── mumbai_ward_metadata.csv
-│
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── charts/
-│   ├── map/
-│   ├── forecasting/
-│   └── utils/
-│
-├── public/
-│
-├── package.json
-└── README.md
-```
-
- > The exact structure may vary depending on the frontend framework used.
-
----
-
- ## 📈 Potential ML Extensions
-
- The current prototype can be extended into a production forecasting system.
-
- Potential models include:
-
- - XGBoost
-- LightGBM
-- Random Forest
-- Gradient Boosting
-- Time-series forecasting models
-- Temporal neural networks
-
- Possible prediction targets:
-
-```
-Next-day waste generation
-Waste surge percentage
-Waste storm probability
-Waste storm severity
-Dominant waste type
-Peak waste window
-Required collection capacity
-```
-
- Potential evaluation metrics:
-
- - MAE
-- RMSE
-- Precision
-- Recall
-- F1 Score
-- ROC-AUC
-
- For a real deployment, model performance should be evaluated using future/out-of-time data rather than random train/test splits.
-
----
-
- ## 🔐 Data & Responsible Use
-
- This project is a **hackathon prototype**.
-
- The included dataset is synthetic and is intended to demonstrate the concept of predictive waste intelligence.
-
- It should not be used to make real municipal operational decisions without:
-
- - Verified municipal data
-- Real-time collection data
-- Validated weather feeds
-- Accurate ward boundaries
-- Real event/footfall data
-- Model validation
-- Human operational oversight
-
- The objective is to demonstrate the **potential architecture and decision-support workflow**, not to represent an existing municipal forecasting service.
-
----
-
- ## 🌍 Future Vision
-
- Waste Weather can evolve beyond Mumbai.
-
- The same architecture could support other cities by replacing the underlying geographic, calendar, weather, and operational data.
-
- Potential future capabilities:
-
- - Real-time IoT bin data
-- GPS data from collection vehicles
-- Live traffic conditions
-- Real-time weather forecasts
-- Event APIs
-- Mobile workforce coordination
-- Dynamic route optimization
-- Flood-risk integration
-- Waste-processing facility capacity
-- Carbon/emissions estimation
-- Multi-city forecasting
-
- Ultimately:
-
-```
-TODAY
-
-City reacts to waste.
-
-        ↓
-
-TOMORROW
-
-City predicts waste.
-
-        ↓
-
-FUTURE
-
-City prepares for waste before it arrives.
+└── data_generation/
+    └── generate_dataset.py         # Synthetic data generation script
 ```
 
 ---
 
- # 🎯 The Core Idea
+## Wards covered
 
- > **Don't clean up after the storm.**
->
->  **Prepare before it arrives.**
+24 Mumbai administrative wards, from Colaba-Fort (A) in the south to Mulund (T) in the north:
 
- **Waste Weather — The City's Second Weather.**
+`A · B · C · D · E · F/S · F/N · G/S · G/N · H/E · H/W · K/E · K/W · P/N · P/S · R/N · R/C · R/S · L · M/E · M/W · N · S · T`
+
+Each ward has a distinct baseline, festival activity index, commercial profile, and population density — so predictions are meaningfully different across the city rather than uniform.
+
+---
+
+## Technical notes
+
+**The prototype is a single self-contained HTML file.** It requires no build step, no server, no API keys, and no internet connection after the Google Fonts request. Chart.js is loaded from cdnjs.
+
+**The ward map is SVG-based**, using schematic ellipses positioned to approximate Mumbai's geography from south (Colaba) to north (Mulund/Borivali). No map API is required.
+
+**All data shown in the UI is drawn from the actual CSV dataset**, extracted and embedded as JavaScript constants. The What If? simulator applies a transparent linear model to the slider values — the formula is visible in the source.
+
+---
+
+## What this is not
+
+Waste Weather is not a generic waste management dashboard. It is not a real-time IoT monitoring system. It is not an AI chatbot. It does not connect to live BMC data.
+
+It is a **predictive operations layer** — the missing piece between the city's existing data (calendar, weather, historical waste) and the decisions municipal teams need to make the night before a major event.
+
+The central claim is straightforward: if a city knows Ganesh Visarjan is tomorrow, knows the footfall forecast, knows the rainfall, and knows that Dadar produced a 76% waste surge last year on the same day — it has enough information to pre-position resources tonight. It just needs a system that connects those signals to an operational recommendation.
+
+That is what Waste Weather does.
+
+---
+
+## Data disclaimer
+
+The dataset (`mumbai_waste_daily_2021_2025.csv`) is **synthetic and simulated**, generated for hackathon prototyping purposes. It is not official BMC (Brihanmumbai Municipal Corporation) data. Ward boundaries, population figures, and waste tonnage are approximations intended to be plausible at city scale, not precise municipal records.
+
+---
+
+*Built for hackathon demonstration. Synthetic dataset. Not official municipal data.*
