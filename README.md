@@ -1,4 +1,4 @@
-# 🌧️ WASTE WEATHER
+# 🌧️ WASTE WEATHER:
 
  ### Predict the city's next waste storm.
 
